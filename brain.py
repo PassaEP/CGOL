@@ -25,9 +25,12 @@ class Cell:
         else: 
             self.col = num % 39 #position in row. 
             self.row_num = math.trunc(num / 39)
-            self.pA = a + (self.col * 20) #the distance across 
-            self.pU = 10 + (20 * a) #the distance up & down
-            self.FC = Point(self.pX, )
+            self.fA = a + (self.col * 20) #the distance across 
+            self.fU = a + (self.row_num * 20) #the distance up & down
+            self.FC = Point(self.fA, self.fU) #the first corner
+            self.BC = Point(self.fA + 20, self.fU + 20) #the second corner 
+            self.sqr = Rectangle(self.FC, self.BC) 
+
 
 
 

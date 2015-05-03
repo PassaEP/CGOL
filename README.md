@@ -1,0 +1,2 @@
+# CGOL
+Some automata. 

@@ -1,12 +1,15 @@
 from graphics import *
 import math
-window_width = 800
-window_height = 600
 
-#the cell class contains methods to init state, change state
-#coordinates as well. 
 a = 10 #the top corner coords. 
 b = 30 #the second bottom corner. 
+length = b - a
+window_width = 800
+window_height = 600
+cell_total = ((window_width - 20) * (window_height - 20)) / (length * length)
+#the cell class contains methods to init state, change state
+#coordinates as well. 
+
 class Cell:
 
     stat = 0
@@ -22,6 +25,7 @@ class Cell:
             self.BC = Point(b,b)
             self.col = 0
             self.row_num = 0 
+            self.sqr = Rectangle(self.FC,self.BC)
         else: 
             self.col = num % 39 #position in row. 
             self.row_num = math.trunc(num / 39)
@@ -33,21 +37,17 @@ class Cell:
 
 
 
-
-
-
-
-t_CORN = Point(10,10)
-b_CORN = Point(30,30)
-
 box = []
 
 
-def init(): 
+def gridInit(): 
     screen = GraphWin("Conway's Game of Life", window_width, window_height)
-    c = Rectangle(Point(10,10), Point(30,30))
-    c.draw(screen)
+    for x in range(0, cell_total): 
+        j = Cell()
+        j.loc(x)
+        box.append(j)
+        box[x].sqr.draw(screen)
     screen.getMouse() # pause for click in window
     screen.close()
 
-init()
+gridInit()

@@ -34,7 +34,7 @@ class Cell:
             self.row_num = 0
             self.sqr = Rectangle(self.FC,self.BC)
         else:
-            self.col = num % row_total #position in row.
+            self.col = num % row_total          #position in row.
             self.row_num = math.trunc(num / row_total)
             self.fA = a + (self.col * length) #the distance across
             self.fU = a + (self.row_num * length) #the distance up & down
@@ -50,5 +50,6 @@ def gridInit(case):
         j.loc(x)
         case.append(j)
         case[x].sqr.draw(screen)
-        update()
+    update()
+    screen.flush
     return screen
